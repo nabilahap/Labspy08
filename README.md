@@ -20,169 +20,163 @@ Kelas : TI.21.A.1
 ### Penjelasan
 - Untuk mengimport dan mendapatkan clear system pada os
 ```py
-from os import system
+import os
 ```
 
 - Untuk membuat class beserta untuk menampung data mahasiswa dan atributnya
 ```py
-class mahasiswa:
-    nim=""
+class data_mhsw:
     nama=""
+    nim=""
     tugas=""
     uts=""
     uas=""
-    akhir=""
 ```
 
-- Untuk variabel untuk menampung list dari dari object mahasiswa
-```py
-pilih=0
-datasiswa=[]
-```
+- Untuk membuat class `data_mhsw` dengan atributnya, yaitu nama, nim, tugas, uts dan uas.
 
-- Untuk menampilkan daftar menu mahasiswa dapat menggunakan
-```python
-def menu():
-    system("cls")
-    print("PROGRAM INPUT NILAI MAHASISWA")
-    print("Menu Utama");
-    print("-"*43)
-    print("1. Tambah Data")
-    print("2. Lihat Data")
-    print("3. Ubah Data")
-    print("4. Hapus Data")
-    print("5. Keluar")
-    pilih= int(input("Masukan Pilihan Anda : "))
-    if pilih == 1:
-        pilih1()
-        menu()
-    elif pilih == 2:
-        tampil()
-        input("Kembali Menu Utama")
-        menu()
-    elif pilih == 3:
-        index_update=-1
-        tampil()
-        id_edit = int(input("Input NIM yang akan diupdate "))
-        for a in range(0, len(datasiswa)):
-            if id_edit==datasiswa[a].nim:
-                index_update=a
-                break
-        if (index_update > -1):
-            print("INPUT DATA YANG DI UPDATE")
-            siswa=mahasiswa()
-            siswa.nim=(int(input("Msdukan NIM                      : ")))
-            siswa.nama=(input("Masukan Nama Mahasiswa          : "))
-            siswa.tugas=(float(input("Masukan Nilai Tugas              : ")))
-            siswa.uts=(float(input("Masukan Nilai Uts              : ")))
-            siswa.uas=(float(input("Masukan Nilai Uas              : ")))
-            siswa.akhir=siswa.tugas*0.30+siswa.uts*0.35+siswa.uas*0.35
-            datasiswa=[index_update]=siswa
-            print("Berhasil Update Data Mahasiswa")
-        else : print("NIM Tidak Ditemukan")
-        input("Kembali Menu Utama")
-        menu()
-    elif pilih ==4:
-        system("cls")
-        tampil()
-        index_update=-1
-        id_hapus = int(input("Input NIM Yang Akan Dihapus"))
-        for a in range (0, len(data)):
-            if id_hapus==datasiswa[a].nim:
-                index_delete = a
-                break
-        if(index_delete > -1):
-            del datasiswa[index_delete]
-            print("Data Telah Dihapus")
-        else: 
-            print("NIM Tidak Ditemukan")
-            input("Kembali Menu Utama")
-            menu()
-            menu()
-    elif pilih ==5 :
-        exit()
-```
+    ```python
+    class data_mhsw:
+        nama=""
+        nim=""
+        tugas=""
+        uts=""
+        uas=""
+    ```
 
-- Untuk menambahkan data mahasiswa
-```py
-def pilih1():
-    ulang = "Y"
-    while ulang in("y","Y"):
-        system("cls")
-        siswabaru=mahasiswa()
-        print("INPUT DATA MAHASISWA")
-        siswabaru.nim=(int(input("Masukan NIM            : ")))
-        siswabaru.nama=(input("Masukan Nama Mahasiswa : "))
-        siswabaru.tugas=(float(input("Masukan Nilai Tugas    : ")))
-        siswabaru.uts=(float(input("Masukan Nilai UTS      : ")))
-        siswabaru.uas=(float(input("Masukan Nilai UAS      : ")))
-        siswabaru.akhir=siswabaru.tugas*0.30 + siswabaru.uts*0.35 + siswabaru.uas*0.35
-        datasiswa.append(siswabaru)
-        ulang=input("Apakah Anda Ingin Mengulang (Y/T)? ")
-menu()
-```
+- Untuk membuat variable `data = []` untuk menampung list dari `data_mhsw`.
 
-- Input untuk menampilkan data yang sudah tersimpan ,cara mengaksesnya dengan memilih angka yang sudah disedikan di daftar menu
-```python
-def tampil():
-    system("cls")
-    print("DATA MAHASISWA")
-    for data in datasiswa:
-        print("Nim          : "+str(data.nim)) 
-        print("Nama         : "+data.nama)
-        print("Nilai Tugas  : "+str(data.tugas))
-        print("Nilai UTS    : "+str(data.uts))
-        print("Nilai UAS    : "+str(data.uas))
-        print("Nilai Akhir  : "+str(data.akhir))
-        print("-"*18)
-```
+    ```python
+    data = []
+    ```
 
-- Untuk menghapus data mahasiswa yang sudah dimasukan kedalam menu
-```py
-elif pilih ==4:
-        system("cls")
-        tampil()
-        index_update=-1
-        id_hapus = int(input("Input NIM Yang Akan Dihapus"))
-        for a in range (0, len(data)):
-            if id_hapus==datasiswa[a].nim:
-                index_delete = a
-                break
-        if(index_delete > -1):
-            del datasiswa[index_delete]
-            print("Data Telah Dihapus")
-        else: 
-            print("NIM Tidak Ditemukan")
-            input("Kembali Menu Utama")
-            menu()
-            menu()
-```
+- Untuk membuat fungsi tambahan, jika diperlukan fungsi tersebut akan dipanggil oleh program.
 
-- Untuk keluar dari program
-```py
-  elif pilih ==5 :
-        exit()
-```
+    ```python
+    def no_data():
+        print("DAFTAR NILAI MAHASISWA")
+        print("----------------------")
+        print()
+        print(" - TIDAK ADA DATA - ")
+        print()
+    ```
 
-### Output
-- ![Gambar1](Screenshots/Screenshot1.png)
+- Untuk menampilkan data ( **lihat()** )
+    - Jika belum menginput data, maka akan memanggil fungsi `no_data()`.
+    - Jika sebelumnya sudah menginput data, maka data yang sudah diinput akan ditampilkan oleh program.
 
-- ![Gambar2](Screenshots/Screenshot2.png)
+        ```python
+        def lihat():
+            os.system("cls")
+            if len(data) <=0:
+                no_data()     
+            else:
+                for a in data:
+                    print("DAFTAR NILAI MAHASISWA")
+                    print("-----------------------")
+                    print("Nama Mahasiswa\t: "+a.nama)
+                    print("NIM Mahasiswa\t: "+str(a.nim))
+                    print("Nilai Tugas\t: "+str(a.tugas))
+                    print("Nilai UTS\t: "+str(a.uts))
+                    print("Nilai UAS\t: "+str(a.uas))
+                    print("Nilai Akhir\t: "+str(a.akhir))
+                    print()
+        ```
 
-- ![Gambar3](Screenshots/Screenshot3.png)
+- Untuk menambah data ( **tambah()** )
+    - Menginput nim, nama, nilai tugas, nilai uts dan nilai uas.
+    - Data yang telah diinput akan ditambahkan ke dalam variable `data`.
 
-- ![Gambar4](Screenshots/Screenshot4.png)
+        ```python
+        def tambah():
+            os.system("cls")
+            b = data_mhsw()
+            print("TAMBAH DATA")
+            print("------------")
+            b.nama = (input("Nama Mahasiswa\t: "))
+            b.nim = (int(input("NIM Mahasiswa\t: ")))
+            b.tugas = (int(input("Nilai Tugas\t: ")))
+            b.uts = (int(input("Nilai UTS\t: ")))
+            b.uas = (int(input("Nilai UAS\t: ")))
+            b.akhir = (b.tugas*30/100) + (b.uts*35/100) + (b.uas*35/100) 
+            data.append(b)
+            print()
+        ```
 
-- ![Gambar5](Screenshots/Screenshot5.png)
+- Untuk mengubah data ( **ubah()** )
+    Menginput nama, kemudian input data yang ingin diubah. 
 
-- ![Gambar6](Screenshots/Screenshot6.png)
+        ```python
+        def ubah():
+            os.system("cls")
+            if len(data) <=0:
+                no_data()
+            else:
+                nama = data_mhsw()
+                print("UBAH DATA")
+                print("---------")
+                nama = (input("Nama Mahasiswa\t: "))
+                for nama in data:
+                    nama.tugas = (int(input("Nilai Tugas\t: ")))
+                    nama.uts = (int(input("Nilai UTS\t: ")))
+                    nama.uas = (int(input("Nilai UAS\t: ")))
+                    akhir = (nama.tugas*30/100) + (nama.uts*35/100) + (nama.uas*35/100)
+                print()
+        ```
 
-- ![Gambar7](Screenshots/Screenshot7.png)
+- Untuk enghapus data ( **hapus()** )
+    Menginput nama, setelah nama diinput maka data yang lainnya akan ikut terhapus sesuai dengan nama yang diinputkan.
 
-- ![Gambar8](Screenshots/Screenshot8.png)
+        ```python
+        def hapus():
+            os.system("cls")
+            if len(data) <=0:
+                no_data()
+            else:
+                nama = data_mhsw()
+                print("HAPUS DATA")
+                print("----------")
+                nama = (input("Nama Mahasiswa\t: "))
+                for nama in data:
+                    data.remove(nama)
+                print()
+        ```
 
-- ![Gambar9](Screenshots/Screenshot9.png)
+- Untuk enggunakan perulangan uncountable, yang artinya selama statement bernilai "True" maka program akan terus berjalan. Jika statementnya "False" maka program terhenti.
 
-- ![Gambar10](Screenshots/Screenshot10.png)
+    ```python
+    Loop = True
+    while Loop:
+        print("Pilih Menu")
+        print("----------")
+        tanya = input("[(L)ihat, (T)ambah, (U)bah, (H)apus, (K)eluar] : ")
+        print()
 
-## Selesai & Terima Kasih
+        if tanya=="l" or tanya=="L":
+            lihat()
+        
+        elif tanya=="t" or tanya=="T":
+            tambah()
+        
+        elif tanya=="u" or tanya=="U":
+            ubah()
+        
+        elif tanya=="h" or tanya=="H":
+            hapus()
+        
+        elif tanya=="k" or tanya=="K":
+            print("Program Selesai")
+            Loop = False
+    ```
+
+### Output 
+* ![Gambar1](Screenshots/ss1.png)
+
+* ![Gambar1](Screenshots/ss2.png)
+
+* ![Gambar1](Screenshots/ss3.png)
+
+* ![Gambar1](Screenshots/ss4.png)
+
+
+### Sekian dan Terimakasih
