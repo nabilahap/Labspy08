@@ -170,13 +170,13 @@ class data_mhsw:
     ```
 
 ### Output 
-* ![Gambar1](Screenshots/ss1.png)
+* ![Gambar1](Screenshots/s1.png)
 
-* ![Gambar1](Screenshots/ss2.png)
+* ![Gambar2](Screenshots/s2.png)
 
-* ![Gambar1](Screenshots/ss3.png)
+* ![Gambar3](Screenshots/s3.png)
 
-* ![Gambar1](Screenshots/ss4.png)
+* ![Gambar4](Screenshots/s4.png)
 
 
 ### Sekian dan Terimakasih
